@@ -22,7 +22,10 @@
 <script src="js/jquery.slicknav.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
-
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/address.js"></script>
+<script src="js/check.js"></script>
+<script src="js/useidchk.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <!-- Google Font -->
@@ -40,57 +43,6 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
-
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
-</script>
 </head>
 <body>
 	<c:import url="header.jsp" />
@@ -118,13 +70,15 @@
 						<div class="hero__tab__form">
 							<h2>Sign Up</h2>
 							<form action="MemberSignupPro.jsp" id="form"
-								class="form-horizontal" method="post">
+								class="form-horizontal" method="post" name="chkform">
 								<p class="lead">
 								<div class="form-group">
 									<label class="col-form-label col-form-label-lg"
-										for="inputLarge">ID </label> <input
+										for="inputLarge">ID</label><input
 										class="form-control form-control-lg" name="custname"
-										type="text" placeholder="ID" id="inputLarge">
+										type="text" placeholder="ID" id="custname"><br>
+										<p><a onclick="idcheck()" class="btn btn-warning btn-lg btn-block">Use ID Check</a></p><br>
+										<input type="hidden" value=0 id="idchk" name="useid">
 								</div>
 								<div class="form-group">
 									<label class="col-form-label col-form-label-lg"
@@ -156,7 +110,7 @@
 								<div class="form-group">
 									<label class="col-form-label col-form-label-lg"
 										for="inputLarge">City</label><br> <select name="city"
-										id="inputLarge" class="form-control form-control-lg">
+										id="city" class="form-control form-control-lg">
 										<option>City</option>
 										<option value="01">서울/경기</option>
 										<option value="02">인천/부천</option>
@@ -173,8 +127,8 @@
 								<br /> <input type="hidden" name="user_num" value="" /> <br>
 								<hr class="my-4">
 								<p class="lead">
-									<Input type="submit" class="btn btn-danger btn-lg btn-block"
-										value="Sign Up" /> <input type="reset"
+									<input type="button" class="btn btn-danger btn-lg btn-block"
+										value="Sign Up" onclick="chkInfo()"/> <input type="reset"
 										class="btn btn-primary btn-lg btn-block" value="Reset">
 									<input type="button" class="btn btn-warning btn-lg btn-block"
 										value="Cancle" onclick="location.href='Main.jsp'">

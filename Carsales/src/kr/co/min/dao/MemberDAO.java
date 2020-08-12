@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import kr.co.min.beans.MemberBean;
+import kr.co.min.beans.MemberGradeBean;
 
 public class MemberDAO {
 
@@ -36,6 +37,7 @@ public class MemberDAO {
 
 	// 회원가입
 	public void signupMember(MemberBean bean) {
+
 		getConnection();
 		try {
 
@@ -80,70 +82,69 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	
-	
+
 	// 전체글의 갯수를 반환하는 메소드
-		public int getAllcount() {
-			getConnection();
+	public int getAllcount() {
+		getConnection();
 
-			int count = 0;
+		int count = 0;
 
-			try {
-				String sql = "select count(*) from FAQ";
-				pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
+		try {
+			String sql = "select count(*) from FAQ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 
-				if (rs.next()) {
-					count = rs.getInt(1); // 전체 게시글 수
-				}
-
-				conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
+			if (rs.next()) {
+				count = rs.getInt(1); // 전체 게시글 수
 			}
-			return count;
+
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return count;
+	}
 
-		// 최신멤버 역순으로 입력되는 숫자 범위만큼 가져오기
-		public ArrayList<MemberBean> getAllMember(int start, int end) {
+	// 최신멤버 역순으로 입력되는 숫자 범위만큼 가져오기
+	public ArrayList<MemberBean> getAllMember(int start, int end) {
 
-			ArrayList<MemberBean> al = new ArrayList<MemberBean>();
+		ArrayList<MemberBean> al = new ArrayList<MemberBean>();
 
-			getConnection();
+		getConnection();
 
-			try {
+		try {
 
-				String sql = "select * from (select A.*, Rownum Rcustno from(select * from member order by custno desc)A)where Rcustno >= ? and Rcustno <=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, end);
+			String sql = "select * from (select A.*, Rownum Rcustno from(select * from member order by custno desc)A)where Rcustno >= ? and Rcustno <=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 
-				rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 
-				while (rs.next()) {
-					
-					MemberBean bean = new MemberBean();
-					bean.setCustno(rs.getInt(1));// sequence member_number
-					bean.setCustname(rs.getString(2));
-					bean.setCustpw(rs.getString(3));
-					bean.setPhone(rs.getString(4));
-					bean.setAdress(rs.getString(5));
-					bean.setJoindate(rs.getString(6));
-					bean.setGrade(rs.getString(7));
-					bean.setCity(rs.getString(8));
+			while (rs.next()) {
 
-					al.add(bean);
-				}
+				MemberBean bean = new MemberBean();
+				bean.setCustno(rs.getInt(1));// sequence member_number
+				bean.setCustname(rs.getString(2));
+				bean.setCustpw(rs.getString(3));
+				bean.setPhone(rs.getString(4));
+				bean.setAdress(rs.getString(5));
+				bean.setJoindate(rs.getString(6));
+				bean.setGrade(rs.getString(7));
+				bean.setCity(rs.getString(8));
 
-				conn.close();
-
-			} catch (Exception e) {
-				e.printStackTrace();
+				al.add(bean);
 			}
-			return al;
-		}
 
-	//한명의 회원정보 보기
+			conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return al;
+	}
+
+	// 한명의 회원정보 보기
 	public MemberBean oneMemberInfo(String custname) {
 
 		MemberBean bean = new MemberBean();
@@ -206,7 +207,6 @@ public class MemberDAO {
 			String sql = "update member set Adress=?, City=?, Phone=? where Custno=?";
 			pstmt = conn.prepareStatement(sql);
 
-			
 			pstmt.setString(1, bean.getAdress());// 주소
 			pstmt.setString(2, bean.getCity());// 도시
 			pstmt.setString(3, bean.getPhone());// 핸드폰번호
@@ -237,4 +237,79 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
+
+	// 회원등급 수정
+	public void insertMemberGrade(int custno, String grade) {
+
+		getConnection();
+		try {
+
+			String sql = "update member set grade=? where custno=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, grade);
+			pstmt.setInt(2, custno);
+			pstmt.executeUpdate();
+
+			if (conn != null)
+
+				conn.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 한개의 등급 확인
+		public MemberGradeBean readMemberGrade(String grade) {
+
+			MemberGradeBean gbean = new MemberGradeBean();
+
+			System.out.println(grade);
+			
+			try {
+				getConnection();
+
+				String sql = "select name from grade where grade=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, grade);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+
+					gbean.setName(rs.getString(1));
+
+				}
+				
+				System.out.println(gbean.getName());
+				
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return gbean;
+		}
+		
+		public MemberBean CheckUserID(String custname) {
+			
+			MemberBean bean = new MemberBean();
+			
+			try {
+				getConnection();
+
+				String sql = "select custname from member where custname=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, custname);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					bean.setCustname(rs.getString(1));
+				}
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return bean;
+		}
 }

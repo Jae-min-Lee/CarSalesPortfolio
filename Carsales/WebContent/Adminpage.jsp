@@ -1,3 +1,4 @@
+<%@page import="kr.co.min.beans.MemberGradeBean"%>
 <%@page import="kr.co.min.beans.ReservationBean"%>
 <%@page import="kr.co.min.dao.ReservationDAO"%>
 <%@page import="java.util.Date"%>
@@ -16,6 +17,30 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 매출 목록</title>
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 	<c:import url="header.jsp"/>
@@ -29,7 +54,6 @@
 	MemberBean MemberBean = mdao.oneMemberInfo(custname);
 	
 	ReservationDAO rdao = new ReservationDAO();
-	
 	
 	
 	int pageSize = 10; //화면에 보여질 게시글의 숫자 지정
@@ -58,12 +82,14 @@
 
 	//테이블에 표시할 번호를 지정
 	number = count - (currentPage - 1) * pageSize;
+	
+	
 	%>
 		<!-- Breadcrumb End -->
     <div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-20 text-center">
                     <div class="breadcrumb__text">
                         <h2>AdminPage</h2>
                         <div class="breadcrumb__links">
@@ -83,14 +109,15 @@
 				<table class="table table-hover" id='OnetoOne_list'>
 					<thead>
 						<tr>
-							<th class="text-center d-none d-md-table-cell">회원번호</th>
-							<th class="text-center d-none d-md-table-cell">회원아이디</th>
-							<th class="text-center d-none d-md-table-cell">전화번호</th>
+							<th class="text-center d-none d-md-table-cell">No</th>
+							<th class="text-center d-none d-md-table-cell">ID</th>
+							<th class="text-center d-none d-md-table-cell">Tel</th>
 							<th class="w-35">주소</th>
-							<th class="text-center d-none d-md-table-cell">가입일자</th>
-							<th class="text-center d-none d-md-table-cell">고객등급</th>
-							<th class="text-center d-none d-md-table-cell">거주지역코드</th>
-							<th class="text-center d-none d-md-table-cell">매출</th>
+							<th class="text-center d-none d-md-table-cell">Join Date</th>
+							<th class="text-center d-none d-md-table-cell">Grade</th>
+							<th class="text-center d-none d-md-table-cell">Update Grade</th>
+							<th class="text-center d-none d-md-table-cell">City Code</th>
+							<th class="text-center d-none d-md-table-cell">Sales</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -102,6 +129,7 @@
 							Date today = dffrom.parse(bean.getJoindate());
 							String sdate = dfto.format(today);
 							ReservationBean rbean = rdao.getReservationCheck(bean.getCustno());
+							
 						%>
 						<tr>
 							<td class="text-center d-none d-md-table-cell"><%=bean.getCustno() %></td>
@@ -109,7 +137,17 @@
 							<td class="text-center d-none d-md-table-cell"><%=bean.getPhone() %></td>
 							<td align="left" width="300"><%=bean.getAdress() %></td>
 								<td class="text-center d-none d-md-table-cell"><%=sdate %></td>
-								<td class="text-center d-none d-md-table-cell"><%=bean.getGrade() %></td>
+								<%
+								MemberGradeBean gbean = mdao.readMemberGrade(bean.getGrade());
+								%>
+								<td class="text-center d-none d-md-table-cell"><%=gbean.getName() %></td>
+								<td class="text-center d-none d-md-table-cell"><form action="MemberGradeInsert.jsp" method="post"><select name="grade">
+								<option value ="S">VIP</option>
+								<option value ="A">Gold</option>
+								<option value ="B">Silver</option>
+								<option value ="C">Bronze</option>
+								<option value ="D">Iron</option>
+								</select><input type ="hidden" value="<%=bean.getCustno() %>" name="custno"><br><input type="submit" value="Enter Member Grade"></form></td>
 							<td class="text-center d-none d-md-table-cell"><%=bean.getCity() %></td>
 							<td class="text-center d-none d-md-table-cell"><%=rbean.getPrice() %></td>
 						</tr>

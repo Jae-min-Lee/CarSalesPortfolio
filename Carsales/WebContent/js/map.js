@@ -8,8 +8,8 @@
 
 // 말풍선 내용
 	var contentString	= '<div>' +
-	'<h2>쉬어가는 고양이</h2>'+
-	'<p>고양이집</p>' +
+	'<h2>KCARD</h2>'+
+	'<p>국산 카 딜러</p>' +
 	
 	'</div>';
 	var myLatlng = new google.maps.LatLng(Y_point, X_point);

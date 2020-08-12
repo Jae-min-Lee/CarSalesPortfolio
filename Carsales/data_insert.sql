@@ -1,6 +1,6 @@
-차 판매
+�� �Ǹ�
 
---차량 사이즈
+--���� ������
 create table carsize(
 num number primary key,
 name varchar(20)
@@ -17,21 +17,24 @@ insert into carsize values(7, 'other');
 drop table carsize;
 -----------------------------------------------------------------------------------------------------------------------------
 
---차량 제조회사
-create table company(
-num number primary key,
+--�� ���
+create table grade(
+grade varchar(2) primary key,
 name varchar(20)
 );
 
-insert into company values(1, 'Hyundai');
-insert into company values(2, 'Kia');
-insert into company values(3, 'Ssangyong');
-insert into company values(4, 'RnaultSamsungm');
-insert into company values(5, 'Chevrolet');
+update member set grade='S' where custno=1;
+select *from member;
 
-drop table carsize;
+insert into grade values('S', 'VIP');
+insert into grade values('A', 'Gold');
+insert into grade values('B', 'Silver');
+insert into grade values('C', 'Bronze');
+insert into grade values('D', 'Iron');
+
+drop table grade;
 -----------------------------------------------------------------------------------------------------------------------------
---차량정보
+--��������
 create SEQUENCE carsale_seq
 start with 1 increment by 1 minvalue 1 nomaxvalue;
 
@@ -91,7 +94,7 @@ drop SEQUENCE carsale_seq;
 drop table carsale;
 -----------------------------------------------------------------------------------------------------------------------------
 
---회원관리
+--ȸ������
 create SEQUENCE member_seq
 start with 1 increment by 1 minvalue 1 nomaxvalue;
 
@@ -100,7 +103,7 @@ custno number(6) primary key,
 custname varchar2(20),
 custpw varchar2(20),
 phone varchar2(13),
-adress varchar2(60),
+adress clob,
 joindate date,
 grade char(1),
 city char(2)
@@ -110,7 +113,7 @@ drop SEQUENCE member_seq;
 drop table member;
 -----------------------------------------------------------------------------------------------------------------------------
 
---예약확인(회원매출정보 명세서)
+--����Ȯ��(ȸ���������� ����)
 
 create table money(
 custno NUMBER(6),
@@ -142,7 +145,7 @@ drop table money;
 --);
 ----------------------------------------------------------------------------------------------------------------
 
---이벤트
+--�̺�Ʈ
 create SEQUENCE event_seq
 start with 1 increment by 1 minvalue 1 nomaxvalue;
 
@@ -155,25 +158,26 @@ img clob,
 reg_date DATE
 );
 
-insert into event values(event_seq.nextval, '메인이벤트1', '메인이벤트1', '2020/01/01~2020/01/31', 'event2.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트2', '메인이벤트2', '2020/02/02~2020/02/31', 'event2.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트3', '메인이벤트3', '2020/02/01~2020/02/31', 'event3.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트4', '메인이벤트4', '2020/03/01~2020/03/31', 'event4.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트5', '메인이벤트5', '2020/04/01~2020/04/31', 'event5.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트6', '메인이벤트6', '2020/06/01~2020/06/31', 'event6.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트7', '메인이벤트7', '2020/07/01~2020/07/31', 'event7.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트8', '메인이벤트8', '2020/08/01~2020/08/31', 'event8.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트9', '메인이벤트9', '2020/09/01~2020/09/31', 'event9.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트10', '메인이벤트10', '2020/10/01~2020/10/31', 'event10.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트11', '메인이벤트11', '2020/11/01~2020/11/31', 'event11.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트12', '메인이벤트12', '2020/12/01~2020/12/31', 'event12.png', sysdate);
-insert into event values(event_seq.nextval, '메인이벤트12', '메인이벤트12', '2020/12/01~2020/12/31', 'event13.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ1', '�����̺�Ʈ1', '2020/01/01~2020/01/31', 'event2.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ2', '�����̺�Ʈ2', '2020/02/02~2020/02/31', 'event2.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ3', '�����̺�Ʈ3', '2020/02/01~2020/02/31', 'event3.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ4', '�����̺�Ʈ4', '2020/03/01~2020/03/31', 'event4.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ5', '�����̺�Ʈ5', '2020/04/01~2020/04/31', 'event5.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ6', '�����̺�Ʈ6', '2020/06/01~2020/06/31', 'event6.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ7', '�����̺�Ʈ7', '2020/07/01~2020/07/31', 'event7.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ8', '�����̺�Ʈ8', '2020/08/01~2020/08/31', 'event8.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ9', '�����̺�Ʈ9', '2020/09/01~2020/09/31', 'event9.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ10', '�����̺�Ʈ10', '2020/10/01~2020/10/31', 'event10.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ11', '�����̺�Ʈ11', '2020/11/01~2020/11/31', 'event11.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ12', '�����̺�Ʈ12', '2020/12/01~2020/12/31', 'event12.png', sysdate);
+insert into event values(event_seq.nextval, '�����̺�Ʈ12', '�����̺�Ʈ12', '2020/12/01~2020/12/31', 'event13.png', sysdate);
 
 drop SEQUENCE event_seq;
+
 drop table event;
 ----------------------------------------------------------------------------------------------------------------
 
---자유게시판
+--�����Խ���
 create sequence board_seq
 
     start with 1 increment by 1 minvalue 1 nomaxvalue;
