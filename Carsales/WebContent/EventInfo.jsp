@@ -51,17 +51,17 @@
 				<div class="card shadow">
 					<div class="card-body">
 						<div class="form-group">
-							<label for="board_subject">제목</label> <input type="text"
+							<label for="board_subject">SUBJECT</label> <input type="text"
 								id="board_writer_name" name="title" class="form-control"
 								value="<%=bean.getTitle()%>" disabled="disabled" />
 						</div>
 						<div class="form-group">
-							<label for="board_subject">기간</label> <input type="text"
+							<label for="board_subject">TERM</label> <input type="text"
 								id="board_writer_name" name="term" class="form-control"
 								value="<%=bean.getTerm()%>" disabled="disabled" />
 						</div>
 						<div class="form-group">
-							<label for="board_subject">내용</label>
+							<label for="board_subject">CONTENT</label>
 							<textarea class="form-control" name="content"
 								style="resize: none;" id="exampleTextarea" rows="3">
 								<%=bean.getContent() %>
@@ -74,11 +74,11 @@
 							<div class="text-right">
 								<a
 									href="EventUpdateForm.jsp?num=<%=bean.getNum()%>"
-									class="btn btn-primary">수정하기</a>
+									class="btn btn-primary">Update</a>
 									<a
 									href="EventDeleteForm.jsp?num=<%=bean.getNum()%>"
-									class="btn btn-danger">삭제하기</a>
-									<a href='Event.jsp' class="btn btn-info">목록보기</a>
+									class="btn btn-danger">Delete</a>
+									<a href='Event.jsp' class="btn btn-info">List</a>
 							</div>
 						</div>
 						<%
@@ -86,7 +86,7 @@
 						%>
 						<div class="form-group">
 							<div class="text-right">
-								<a href='Event.jsp' class="btn btn-info">목록보기</a>
+								<a href='Event.jsp' class="btn btn-info">List</a>
 							</div>
 						</div>
 						<%

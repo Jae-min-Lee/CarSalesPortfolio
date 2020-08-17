@@ -41,7 +41,7 @@
                             <div class="car-model">Model 2019</div>
                             <h2>$399<span>/Month</span></h2>
                         </div>
-                        <a href="#" class="primary-btn"><images src="images/wheel.png" alt="">Learn More</a>
+                        <a href="CarList.jsp" class="primary-btn"><img src="images/wheel.png" alt="">&nbsp;&nbsp;Learn More</a>
                     </div>
                 </div>
             </div>

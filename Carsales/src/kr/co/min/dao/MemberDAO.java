@@ -166,10 +166,12 @@ public class MemberDAO {
 				bean.setPhone(rs.getString(4));
 				bean.setAdress(rs.getString(5));
 				bean.setJoindate(rs.getString(6));
-				bean.setCity(rs.getString(7));
+				bean.setGrade(rs.getString(7));
+				bean.setCity(rs.getString(8));
 
 			}
 			conn.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -264,8 +266,6 @@ public class MemberDAO {
 		public MemberGradeBean readMemberGrade(String grade) {
 
 			MemberGradeBean gbean = new MemberGradeBean();
-
-			System.out.println(grade);
 			
 			try {
 				getConnection();
@@ -281,8 +281,6 @@ public class MemberDAO {
 					gbean.setName(rs.getString(1));
 
 				}
-				
-				System.out.println(gbean.getName());
 				
 				conn.close();
 			} catch (Exception e) {

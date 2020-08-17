@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시글 삭제 페이지</title>
+<title>Free Board_Delete</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
@@ -37,35 +37,35 @@
     </div>
     <!-- Breadcrumb Begin -->
 	<form action="BoardDeletePro.jsp" method="post">
-		<div class="container" style="margin-top: 100px">
+		<div class="container" style="margin-top: 30px">
 <h2 align="center">Board Info Delete Page</h2>
 		<fieldset>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">글번호</label>
+					<label class="col-form-label col-form-label-lg" for="inputLarge">NO</label>
 					<input type="text" class="form-control" id="inputLarge"
 						value="<%=bean.getNum()%>" readonly="readonly" />
 				</div>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
-					<input type="text" name="writer" class="form-control"
+					<label class="col-form-label col-form-label-lg" for="inputLarge">SUBJECT</label>
+					<input type="text" name="subject" class="form-control"
 						id="inputLarge" value="<%=bean.getSubject()%>"
 						readonly="readonly" />
 				</div>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">비밀번호</label>
+					<label class="col-form-label col-form-label-lg" for="inputLarge">PASSWORD</label>
 					<input type="password" name="password" class="form-control"
-						id="inputLarge" placeholder="비밀번호를 입력해주세요." />
+						id="inputLarge" placeholder="Enter your Password" />
 				</div>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">내용</label>
-					<input type="text" name="writer" class="form-control"
+					<label class="col-form-label col-form-label-lg" for="inputLarge">CONTENT</label>
+					<input type="text" name="content" class="form-control"
 						id="inputLarge" value="<%=bean.getContent()%>"
 						readonly="readonly" />
 				</div>
 				<div class="form-group" align="center">
 					<input type="hidden" name="num" value="<%=bean.getNum()%>"> 
-					<input type="submit" class="btn btn-warning" value="글삭제하기">&nbsp;&nbsp; 
-					<input type="button" onclick="location.href='BoardList.jsp'" class="btn btn-primary" value="글 목록 보기">
+					<input type="submit" class="btn btn-warning" value="Delete">&nbsp;&nbsp; 
+					<input type="button" onclick="location.href='BoardList.jsp'" class="btn btn-primary" value="List">
 				</div>
 			</fieldset></div>
 	</form>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판 글 쓰기</title>
+<title>Contact Us</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>

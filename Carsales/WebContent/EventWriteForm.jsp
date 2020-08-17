@@ -37,25 +37,25 @@
 			<div class="card shadow">
 				<div class="card-body">
 					<div class="form-group">
-						<label for="board_file">파일</label>
+						<label for="board_file">File</label>
 						<input type="file" name="img" onchange="filecheck(this)" accept="image/gif, image/jpeg, image/png"/>
 					</div>
 					<div class="form-group">
-						<label for="board_writer_name">제목</label>
+						<label for="board_writer_name">Subject</label>
 						<input type="text" name="title" class="form-control"/>
 					</div>
 					<div class="form-group">
-						<label for="board_date">기간</label>
+						<label for="board_date">Term</label>
 						<input type="text" id="board_date" name="term" class="form-control" placeholder="yyyy/mm/dd~yyyy/mm/dd 양식에 맞게 입력해 주세요."/>
 					</div>
 					<div class="form-group">
-						<label for="board_content">내용</label>
+						<label for="board_content">Content</label>
 						<textarea id="board_content" name="content" class="form-control" rows="10" style="resize:none"></textarea>					
 					</div>
 					<div class="form-group">
 						<div class="text-right">
-							<input type="submit" class="btn btn-primary" value="이벤트 등록">
-							<a href='Event.jsp' class="btn btn-info">목록보기</a>
+							<input type="submit" class="btn btn-primary" value="Register Event">
+							<a href='Event.jsp' class="btn btn-info">List</a>
 						</div>
 					</div>
 				</div>

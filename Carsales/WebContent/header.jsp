@@ -57,7 +57,6 @@ try {
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__widget">
             <a href="#"><i class="fa fa-cart-plus"></i></a>
-            <a href="#" class="search-switch"><i class="fa fa-search"></i></a>
             <%
 		
 		if (custname.equals("GUEST")) {
@@ -158,7 +157,6 @@ try {
                         <div class="header__nav__widget">
                             <div class="header__nav__widget__btn">
                                 <a href="CarReservationCheck.jsp?custno=<%=bean.getCustno()%>"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#" class="search-switch"><i class="fa fa-search"></i></a>
                             </div>
                             <%
 		
@@ -196,18 +194,6 @@ try {
         </div>
     </header>
     <!-- Header Section End -->
-    
-    
-    <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search End -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

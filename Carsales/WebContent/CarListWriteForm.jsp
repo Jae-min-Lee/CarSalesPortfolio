@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 자동차등록</title>
+<title>Admin Car Management</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script type="text/javascript">
 	function fileCheck(obj) {
@@ -32,6 +32,7 @@
 </script>
 </head>
 <body>
+	<c:import url="header.jsp" />
 	<%
 		String custname = request.getParameter("custname");
 
@@ -39,81 +40,96 @@
 
 	MemberBean MemberBean = dao.oneMemberInfo(custname);
 	%>
-				 <!-- Breadcrumb End -->
-    <div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Car Listing_Write</h2>
-                        <div class="breadcrumb__links">
-                            <a href="Main.jsp"><i class="fa fa-home"></i> Home</a>
-                            <a href="CarList.jsp">Car Listing</a>
-                            <span>Car Listing_Write</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb Begin -->
-		<c:import url="header.jsp" />
+	<!-- Breadcrumb End -->
+	<div class="breadcrumb-option set-bg"
+		data-setbg="images/breadcrumb-bg.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Car Listing_Write</h2>
+						<div class="breadcrumb__links">
+							<a href="Main.jsp"><i class="fa fa-home"></i> Home</a> <a
+								href="CarList.jsp">Car Listing</a> <span>Car
+								Listing_Write</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumb Begin -->
+
 	<form action="CarListWritePro.jsp" method="post"
 		enctype="multipart/form-data">
 		<div class="container" style="margin-top: 100px">
-			<h2 class="card-header">Car Listing_Write</h2>
-			<fieldset>
-				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">차
-						이름을 입력해 주세요.</label> <input type="text" name="carsale_name"
-						class="form-control" id="inputLarge" placeholder="차이름을 입력해 주세요." />
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+					<div class="card shadow">
+						<div class="card-body">
+							<div class="form-group">
+
+								<h2 class="card-header">Car Listing_Write</h2>
+								<fieldset>
+									<div class="form-group">
+										<label class="col-form-label">Enter Car Name</label> <input
+											type="text" name="carsale_name" class="form-control"
+											placeholder="Enter Car Name." />
+									</div>
+									<div class="form-group">
+										<label class="col-form-label">Category</label><br> <select
+											name="carsale_Category">
+											<option value="01">Small CAR</option>
+											<option value="02">Mid-size CAR</option>
+											<option value="03">Full-sized CAR</option>
+											<option value="04">Small SUV</option>
+											<option value="05">Mid-size SUV</option>
+											<option value="06">Full-sized SUV</option>
+											<option value="07">Other</option>
+										</select><br>
+									</div>
+									<br>
+									<div class="form-group">
+										<label class="col-form-label">Price($)</label> <input
+											type="text" name="carsale_Price" class="form-control"
+											placeholder="$" />
+									</div>
+									<div class="form-group">
+										<label class="col-form-label">Company</label><br>
+										<select name="carsale_company">
+											<option data-display="Brand">Select Brand</option>
+											<option value="1">Hyundai</option>
+											<option value="2">KIA</option>
+											<option value="3">Ssangyong</option>
+											<option value="4">RnaultSamsungm</option>
+											<option value="5">Chevrolet(GM DAEWOO)</option>
+										</select><br>
+									</div>
+									<div class="form-group">
+										<br>
+										<label class="col-form-label">Information URL</label> <input
+											type="text" name="carsale_info" class="form-control"
+											placeholder="Information URL" />
+									</div>
+									<div class="form-group">
+										<label for="exampleInputFile">File Upload</label> <input
+											type="file" class="form-control-file" id="exampleInputFile"
+											aria-describedby="fileHelp" name="carsale_img"
+											onchange="filecheck(this)"
+											accept="image/gif, image/jpeg, image/png" /> <small
+											id="fileHelp" class="form-text text-muted"> Maximum
+											upload file size 10MB.</small>
+									</div>
+									<Input type="submit" class="btn btn-primary"
+										value="Register Car" /> <a href="CarList.jsp" 
+										class="btn btn-warning">List</a>
+								</fieldset>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">차종
-						입력해주세요.</label> <select name="carsale_Category">
-						<option value="01">소형</option>
-						<option value="02">중형</option>
-						<option value="03">대형</option>
-						<option value="04">소형SUV</option>
-						<option value="05">중형SUV</option>
-						<option value="06">대형SUV</option>
-						<option value="07">기타</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">차가격을
-						입력해주세요.(※만원단위)</label> <input type="text" name="carsale_Price"
-						class="form-control" id="inputLarge"
-						placeholder="차가격을 만원단위로 입력해 주세요." />
-				</div>
-				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">차량제조
-						회사를 입력해주세요.</label> <select name="carsale_company">
-						<option data-display="Brand">Select Brand</option>
-						<option value="1">Hyundai</option>
-						<option value="2">KIA</option>
-						<option value="3">Ssangyong</option>
-						<option value="4">RnaultSamsungm</option>
-						<option value="5">Chevrolet(GM DAEWOO)</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">차량정보
-						링크주소를 입력해 주세요.</label> <input type="text" name="carsale_info"
-						class="form-control" id="inputLarge"
-						placeholder="차량정보 링크주소를 입력해 주세요." />
-				</div>
-				<div class="form-group">
-					<label for="exampleInputFile">파일 업로드</label> <input type="file"
-						class="form-control-file" id="exampleInputFile"
-						aria-describedby="fileHelp" name="carsale_img"
-						onchange="filecheck(this)"
-						accept="image/gif, image/jpeg, image/png" /> <small id="fileHelp"
-						class="form-text text-muted">파일 용량은 최대 10MB 까지 가능합니다.</small>
-				</div>
-				<Input type="submit" class="btn btn-primary btn-lg btn-block"
-					value="글등록" />
-			</fieldset>
+			</div>
 		</div>
 	</form>
 	<br>

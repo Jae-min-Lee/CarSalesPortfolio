@@ -19,12 +19,19 @@ MemberDAO rdao = new MemberDAO();
 int result = rdao.getloginMember(custname, custpw);
 
 if(result == 0){
-%><script type="text/javascript">
-alert('회원 아이디 또는 패스워드가 틀렸습니다.');
+%>
+<script type="text/javascript">
+alert('Incorrect ID or Password.');
 location.href='MemberLogin.jsp';
 </script>
 <%}else{//로그인 성공 
-	 session.setAttribute("custname", custname);
+	%>
+	<script type="text/javascript">
+		alert('Success Login.');
+		location.href='MemberLogin.jsp';
+		</script>
+		<%
+		session.setAttribute("custname", custname);
 	response.sendRedirect("Main.jsp");
 	}
 }catch(Exception e){

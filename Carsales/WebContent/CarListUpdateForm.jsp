@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 자동차수정</title>
+<title>Admin Car Management</title>
 </head>
 <body>
 	<%
@@ -49,27 +49,27 @@
 								<img src="upload/<%=bean.getCarsale_img()%>" width="100%" />
 							</div>
 							<div class="form-group">
-								<label for="board_file">파일</label> <input type="file"
+								<label for="board_file">File</label> <input type="file"
 									name="carsale_img" onchange="filecheck(this)"
 									accept="image/gif, image/jpeg, image/png"
 									value="<%=bean.getCarsale_img()%>" />
 							</div>
 							<div class="form-group">
-								<label for="board_writer_name">차 이름</label> <input type="text"
+								<label for="board_writer_name">Car Name</label> <input type="text"
 									name="carsale_name" class="form-control"
 									value="<%=bean.getCarsale_name()%>" />
 							</div>
 							<div class="form-group">
-								<label for="board_date">차종</label> <select
-									name="carsale_Category">
-									<option value="01">소형</option>
-									<option value="02">중형</option>
-									<option value="03">대형</option>
-									<option value="04">소형SUV</option>
-									<option value="05">중형SUV</option>
-									<option value="06">대형SUV</option>
-									<option value="07">기타</option>
-								</select>
+								<label class="col-form-label">Category</label><br> <select
+											name="carsale_Category">
+											<option value="01">Small CAR</option>
+											<option value="02">Mid-size CAR</option>
+											<option value="03">Full-sized CAR</option>
+											<option value="04">Small SUV</option>
+											<option value="05">Mid-size SUV</option>
+											<option value="06">Full-sized SUV</option>
+											<option value="07">Other</option>
+										</select><br>
 							</div>
 							<div class="form-group">
 								<label for="board_subject">차량 가격</label> <input type="text"

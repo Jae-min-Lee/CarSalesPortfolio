@@ -1,3 +1,4 @@
+<%@page import="kr.co.min.beans.MemberGradeBean"%>
 <%@page import="kr.co.min.beans.MemberBean"%>
 <%@page import="kr.co.min.dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -56,8 +57,10 @@
 										class="col-form-label col-form-label"><%=MemberBean.getPhone()%></label>
 								</div>
 								<div class="col-lg-15" align="left">
-									<label class="col-form-label col-form-label">[Area
-										Code] |</label> <label class="col-form-label col-form-label"><%=MemberBean.getCity()%></label>
+								<%
+								MemberGradeBean gbean = dao.readMemberGrade(MemberBean.getGrade());
+								%>
+									<label class="col-form-label col-form-label">[Grade] |</label> <label class="col-form-label col-form-label"><%=gbean.getName() %></label>
 								</div>
 							</div>
 							<hr>
@@ -68,7 +71,7 @@
 					if (custname.equals("admin") && MemberBean.getCustno() == 1) {
 				%>
 				<a href=" AdminOnetoOneList.jsp"
-					class="btn btn-primary btn-lg btn-block">1:1 문의사항들 확인하기</a>
+					class="btn btn-primary btn-lg btn-block">Contact Us Check</a>
 				<%
 					} else {
 				%>
@@ -86,16 +89,16 @@
 								class="form-control" name="phone" /> <label for="board_file">E-mail</label>
 							<input type="email" class="form-control" name="email" /> <input
 								type="hidden" value="<%=custname%>" name="custname"><br>
-							<input type="submit" class="btn btn-info" value="확인">
+							<input type="submit" class="btn btn-info" value="Check">
 						</div>
 					</div>
 				</form>
 				<br>
 				<div class="form-group">
 					<div class="text-right"><p>
-						<button class="btn btn-primary"
+						<button class="btn btn-info"
 							onclick="location.href='MemberInfoUpdate.jsp?custname=<%=custname%>'">My Info Update</button>
-						<button class="btn btn-primary"
+						<button class="btn btn-danger"
 							onclick="location.href='MemberInfoDelete.jsp?custname=<%=custname%>'">Cancel Subscription</button></p>
 					</div>
 				</div>

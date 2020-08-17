@@ -8,8 +8,15 @@
 </head>
 <body>
 <%
+try{
+%>
+	<script type="text/javascript">
+	alert('Success Logout.');
+	</script><%
 session.invalidate();
 response.sendRedirect("Main.jsp");
-%>
+}catch(Exception e){
+	e.printStackTrace();
+}%>
 </body>
 </html>

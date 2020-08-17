@@ -19,14 +19,14 @@ MemberBean bean = dao.CheckUserID(custname);
 
 if(bean.getCustname() == null){
 	%><script type="text/javascript">
-	alert('사용가능한 아이디 입니다.');
+	alert('This ID is available.');
 	opener.chkform.idchk.value = 1;
 	window.close();
 	</script>	
 <%}
 else{
 	%><script type="text/javascript">
-alert('이미 사용 중인 아이디 입니다.');
+alert('This ID already in use.');
 location.href='MemberUseId.jsp';
 </script><%
 	}

@@ -46,47 +46,48 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-	<div class="container" style="margin-top: 100px">
-		<h4 class="card-title">FAQ_Info</h4>
-		<fieldset>
-			<div class="form-group">
-				<label class="col-form-label col-form-label-lg" for="inputLarge">글번호</label>
-				<input type="text" class="form-control" id="inputLarge"
-					value="<%=bean.getNum()%>" readonly="readonly" />
+	<div align="center">
+	<div class="container" style="margin-top: 30px; margin-bottom: 30px">
+	<div class="card shadow">
+			<div class="card-body">
+				<h3 class="card-title" align="left">FAQ_Info</h3><br><hr>
+	<div class="col-md-5 col-sm-10">
+				<div class="contact__form">
+						<div class="row">
+							<div class="col-md-5 col-sm-10" align="left">
+							<label class="col-form-label col-form-label">[No] |</label>
+							<label class="col-form-label col-form-label"><%=bean.getNum()%></label>
+								</div>
+							<div class="col-md-10 col-sm-10" align="left">
+							<h5><label class="col-form-label col-form-label">[Subject] |</label>
+							<input type="text" value="<%=bean.getSubject()%>" disabled="disabled"/></h5>
+							</div><br>
+							<textarea class="form-control" name="content"
+								style="resize: none;" id="exampleTextarea" rows="3" disabled="disabled"><%=bean.getContent()%></textarea>
+				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
-				<input type="text" name="writer" class="form-control"
-					id="inputLarge" value="<%=bean.getSubject()%>" readonly="readonly" />
 			</div>
-			<div class="form-group">
-				<label class="col-form-label col-form-label-lg" for="inputLarge">내용</label>
-				<input type="text" name="writer" class="form-control"
-					id="inputLarge" value="<%=bean.getContent()%>" readonly="readonly" />
-			</div>
-			<div class="form-group">
-							<div class="text-right">
+		<br><hr>
+		<div class="form-group" align="center">
 			<%
 				if (custname.equals("admin") && MemberBean.getCustno() == 1) {
 			%>
-				<input type="button" class="btn btn-warning" value="수정하기"
+				<input type="button" class="btn btn-warning" value="Update"
 					onclick="location.href='FAQUpdateForm.jsp?num=<%=bean.getNum()%>'">
-				<input type="button" class="btn btn-danger" value="삭제하기"
+				<input type="button" class="btn btn-danger" value="Delete"
 					onclick="location.href='FAQDeleteForm.jsp?num=<%=bean.getNum()%>'">
-					<input type="button" class="btn btn-primary" value="목록보기"
+					<input type="button" class="btn btn-primary" value="List"
 					onclick="location.href='FAQ.jsp'">
 				<%
 					} else {
 				%>
-				<input type="button" class="btn btn-primary" value="목록보기"
+				<input type="button" class="btn btn-primary" value="List"
 					onclick="location.href='FAQ.jsp'">
 				<%
 					}
 				%>
 			</div></div>
-		</fieldset>
-	</div>
-	<br><br><br>
+	</div></div></div>
 	<c:import url="footer.jsp" />
 </body>
 </html>

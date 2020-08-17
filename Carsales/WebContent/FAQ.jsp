@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>글 목록 보기</title>
+<title>FAQ</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
@@ -81,7 +81,8 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-	<div class="container" style="margin-top: 100px">
+    <section class="car spad">
+	<div class="container" style="margin-top: 30px">
 		<div class="card shadow">
 			<div class="card-body">
 				<h4 class="card-title">FAQ</h4>
@@ -115,7 +116,6 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
 		<br>
 		<p>
 		<input type="button"
@@ -135,7 +135,9 @@
 		}
 	%>
 	<!-- 페이지 카운터링 소스 작성 부분 -->
-
+<p>
+				<div style="float: left; margin-left: 45%;">
+					<ul class="pagination pagination-lg">
 	<%
 		if (count > 0) {
 		//카운터링 숫자를 얼마까지 보여줄건지를 결정하는 부분.
@@ -159,33 +161,27 @@
 
 		if (startPage > 5) {
 	%>
-	<center>
-		<a href="FAQ.jsp?pageNum=<%=startPage - 10%>"> [이전]</a>
-	</center>
+	<li class="page-item"><a class="page-link" href="FAQ.jsp?pageNum=<%=startPage - 10%>">&laquo;</a></li>
 	<%
 		}
 	//페이징 처리
 	for (int i = startPage; i <= endPage; i++) {
 	%>
-	<a href="FAQList.jsp?pageNum=<%=i%>"> [<%=i%>]
-	</a>
+	<li class="page-item active"><a class="page-link" href="FAQ.jsp?pageNum=<%=i%>"><%=i%>
+	</a></li>
 	<%
 		}
 	if (endPage < pageCount) {
 	%>
-	<center>
-		<a href="FAQ.jsp?pageNum=<%=startPage + 10%>"> [다음]</a>
-	</center>
+	<li class="page-item"><a class="page-link" href="FAQ.jsp?pageNum=<%=startPage + 10%>">&laquo;</a></li>
 	<%
 		}
 	}
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
-	%>
-	<br>
-	<br>
-	<br>
+	%></ul>
+	</div></div></section>
 	<c:import url="footer.jsp" />
 </body>
 </html>

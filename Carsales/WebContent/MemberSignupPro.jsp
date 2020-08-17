@@ -10,6 +10,7 @@
 </head>
 <body>
 <%
+try{
 request.setCharacterEncoding("UTF-8");
 
 String address1 = request.getParameter("zipcode");
@@ -26,9 +27,16 @@ String address = address1+address2+address3+address4;
 	MemberBean.setAdress(address);
 	MemberDAO dao = new MemberDAO();
 	dao.signupMember(MemberBean);
-	
+	%>
+	<script type="text/javascript">
+	alert('Success Signup.');
+	</script><%
 	//회원을 마쳤으면 로그인 화면으로 이동
 		 response.sendRedirect("MemberLogin.jsp"); 
-	%>
+	 }catch(Exception e){
+	e.printStackTrace();
+}%>
+
+	
 </body>
 </html>

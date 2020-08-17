@@ -41,19 +41,20 @@ MemberBean MemberBean = dao.oneMemberInfo(custname);
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-				<h1>Cancel Subscription</h1>
+				<h3>Cancel Subscription</h3>
+				<br>
 					<div class="form-group">
-						<label for="board_file">아이디</label>
+						<label for="board_file">ID</label>
 						<input type="text" class="form-control" value="<%=MemberBean.getCustname() %>" disabled="disabled"/>
 					</div>
 					<div class="form-group">
-						<label for="board_subject">비밀번호</label>
+						<label for="board_subject">Password</label>
 						<input type="password" class="form-control" name="custpw"/><input type="hidden" value="<%=MemberBean.getCustno() %>" name="custno"/>
 					</div>
 					<div class="form-group">
 						<div class="text-right">
-							<input type="submit" class="btn btn-primary" value="회원탈퇴">
-							<a href="MemberMypage.jsp?user_id=<%=custname%>" class="btn btn-primary" >취소</a>
+							<input type="submit" class="btn btn-primary" value="Cancel Subscription">
+							<a href="MemberMypage.jsp?custname=<%=custname%>" class="btn btn-primary" >Cancel</a>
 						</div>
 					</div>
 				</div>
