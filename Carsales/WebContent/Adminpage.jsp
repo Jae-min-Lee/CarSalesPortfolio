@@ -4,8 +4,6 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
-<%@page import="kr.co.min.beans.CityBean"%>
-<%@page import="kr.co.min.dao.CityDAO"%>
 <%@page import="kr.co.min.beans.MemberBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.min.dao.MemberDAO"%>
@@ -16,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 매출 목록</title>
+<title>Admin Page</title>
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -123,7 +121,7 @@
 					<tbody>
 						<%
 							for (int i = 0; i < al.size(); i++) {
-							MemberBean bean = al.get(i);//벡터에 저장된 빈클래스를 하나씩 추출
+							MemberBean bean = al.get(i);
 							DateFormat dffrom = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 							DateFormat dfto = new SimpleDateFormat("yyyy-MM-dd");  
 							Date today = dffrom.parse(bean.getJoindate());

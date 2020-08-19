@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Free Board_Delete</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/FBCheckDelete.js"></script>
 </head>
 <body>
 <c:import url="header.jsp"/>
@@ -36,7 +37,7 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-	<form action="BoardDeletePro.jsp" method="post">
+	<form action="BoardDeletePro.jsp" method="post" name="chkform">
 		<div class="container" style="margin-top: 30px">
 <h2 align="center">Board Info Delete Page</h2>
 		<fieldset>
@@ -64,7 +65,7 @@
 				</div>
 				<div class="form-group" align="center">
 					<input type="hidden" name="num" value="<%=bean.getNum()%>"> 
-					<input type="submit" class="btn btn-warning" value="Delete">&nbsp;&nbsp; 
+					<input type="button" class="btn btn-warning" value="Delete" onclick="chkInfo()"/>&nbsp;&nbsp; 
 					<input type="button" onclick="location.href='BoardList.jsp'" class="btn btn-primary" value="List">
 				</div>
 			</fieldset></div>

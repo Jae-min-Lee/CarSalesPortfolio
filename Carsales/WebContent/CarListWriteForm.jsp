@@ -8,28 +8,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Car Management</title>
+
+<!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="js/CarFileUpload.js"></script>
+<script src="js/CarCheck.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script type="text/javascript">
-	function fileCheck(obj) {
-		pathpoing = obj.value.lastIndexOf('.');
-		filepoint = obj.value.substring(pathpoint + 1, obj.length);
-		filetype = filepoint.toLowerCase();
-		if (filetype == 'jpg' || filetype == 'gif' || filetype == 'png'
-				|| filetype == 'jpeg' || filetype == 'bmp') {
-			//정상적인 이미지 확장자 파일의 경우
-		} else {
-			alert('이미지 파일만 선택 할 수 있습니다.');
-			parentObj = obj.parentNode
-			node = parentObj.replaceChild(obj.cloneNode(true), obj);
-			return false;
-		}
-		if (filetype == 'bmp') {
-			upload = confirm('BMP파일은 웹상에서 사용하기에 적절한 이미지 포맷이 아닙니다. \n 그래도 사용하시겠습니까?');
-			if (upload)
-				return false;
-		}
-	}
-</script>
+
+<!-- Google Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+	rel="stylesheet">
+
+<!-- Css Styles -->
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
 	<c:import url="header.jsp" />
@@ -61,8 +71,8 @@
 	<!-- Breadcrumb Begin -->
 
 	<form action="CarListWritePro.jsp" method="post"
-		enctype="multipart/form-data">
-		<div class="container" style="margin-top: 100px">
+		enctype="multipart/form-data" name="chkform">
+		<div class="container" style="margin-top: 30px">
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-6">
@@ -80,6 +90,7 @@
 									<div class="form-group">
 										<label class="col-form-label">Category</label><br> <select
 											name="carsale_Category">
+											<option>Select Category</option>
 											<option value="01">Small CAR</option>
 											<option value="02">Mid-size CAR</option>
 											<option value="03">Full-sized CAR</option>
@@ -92,13 +103,12 @@
 									<br>
 									<div class="form-group">
 										<label class="col-form-label">Price($)</label> <input
-											type="text" name="carsale_Price" class="form-control"
-											placeholder="$" />
+											type="text" name="carsale_Price" class="form-control" />
 									</div>
 									<div class="form-group">
 										<label class="col-form-label">Company</label><br>
 										<select name="carsale_company">
-											<option data-display="Brand">Select Brand</option>
+											<option>Select Brand</option>
 											<option value="1">Hyundai</option>
 											<option value="2">KIA</option>
 											<option value="3">Ssangyong</option>
@@ -121,8 +131,9 @@
 											id="fileHelp" class="form-text text-muted"> Maximum
 											upload file size 10MB.</small>
 									</div>
-									<Input type="submit" class="btn btn-primary"
-										value="Register Car" /> <a href="CarList.jsp" 
+									<input type="button" class="btn btn-primary"
+										value="Register Car" onclick="chkInfo()"/>
+										<a href="CarList.jsp" 
 										class="btn btn-warning">List</a>
 								</fieldset>
 							</div>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 상세정보</title>
+<title>Event Admin Info</title>
 </head>
 <body>
 		<c:import url="header.jsp" />

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>글 목록 보기</title>
+<title>Free Board</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>

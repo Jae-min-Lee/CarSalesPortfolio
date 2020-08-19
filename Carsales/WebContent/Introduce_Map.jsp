@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>매장 위치</title>
+<title>Map</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBIpIhQGVxBoE_FG3FvGjHErYefhqEpB7U" ></script>
 <script type="text/javascript" src="js/map.js"></script>

@@ -7,8 +7,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>수정용 게시글 보기 페이지</title>
+<title>FAQ Admin Update</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/FAQCheckUpdate.js"></script>
 </head>
 <body>
 	<c:import url="header.jsp"/>
@@ -36,29 +37,30 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-<form action="FAQUpdatePro.jsp" method="post">
-<div class="container" style="margin-top: 100px">
+<form action="FAQUpdatePro.jsp" method="post" name="chkform">
+<div class="container" style="margin-top: 30px">
 <h2 align="center">FAQ_Update</h2>
 		<fieldset>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">글번호</label>
+					<label class="col-form-label col-form-label-lg" for="inputLarge">No</label>
 					<input type="text" class="form-control" id="inputLarge"
 						value="<%=bean.getNum()%>" readonly="readonly" />
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
-					<input type="text" name="writer" class="form-control"
+					<label class="col-form-label col-form-label-lg" for="inputLarge">Subject</label>
+					<input type="text" name="subject" class="form-control"
 						id="inputLarge" value="<%=bean.getSubject()%>"
 						/>
 				</div>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">내용</label>
-					<input type="text" name="writer" class="form-control"
+					<label class="col-form-label col-form-label-lg" for="inputLarge">Content</label>
+					<input type="text" name="content" class="form-control"
 						id="inputLarge" value="<%=bean.getContent()%>"
 						/>
 				</div>
 				<div class="form-group" align="center">
 					<input type="hidden" name="num" value="<%=bean.getNum()%>"> 
-					<input type="submit" class="btn btn-warning" value="글수정하기">&nbsp;&nbsp; <input type="button" onclick="location.href='FAQ.jsp'" class="btn btn-primary" value="글 목록 보기">
+					<input type="button" class="btn btn-warning" value="Update" onclick="chkInfo()"/>
+					&nbsp;&nbsp; <input type="button" onclick="location.href='FAQ.jsp'" class="btn btn-primary" value="List">
 				</div></div>
 			</fieldset>
 		</div>

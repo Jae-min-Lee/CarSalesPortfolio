@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 자동차삭제</title>
+<title>Admin Car Management</title>
 </head>
 <body>
 <%
@@ -43,17 +43,16 @@ CarListBean bean = dao.getOneBoard(carsale_num);
 			<div class="card shadow">
 				<div class="card-body">
 					<div class="form-group">
-						<label for="board_file">첨부 이미지</label>
 						<img src="upload/<%=bean.getCarsale_img()%>" width="100%"/>
 					</div>
 					<div class="form-group">
-						<label for="board_writer_name">차이름</label>
+						<label for="board_writer_name">Car Name</label>
 						<input type="text" name="board_writer_name" class="form-control" value="<%=bean.getCarsale_name()%>" disabled="disabled"/>
 					<div class="form-group">
 						<div class="text-right">
 						<input type="hidden" name="num" value="<%=carsale_num %>"/>
 		<input type="hidden" name="carsale_img" value="<%=bean.getCarsale_img() %>"/><br>
-														<input type="submit" class="btn btn-primary" value="삭제하기">
+														<input type="submit" class="btn btn-primary" value="Delete">
 							<a href='CarList.jsp' class="btn btn-info">목록보기</a>
 						</div>
 					</div>

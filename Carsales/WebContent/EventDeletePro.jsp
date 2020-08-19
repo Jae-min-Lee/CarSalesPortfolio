@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고양이들 삭제하기</title>
+<title>Event Admin Delete</title>
 </head>
 <body>
 	<%

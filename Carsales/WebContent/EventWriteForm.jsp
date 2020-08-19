@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 게시글 등록</title>
+<title>Event Admin Write</title>
+<script src="js/EventCheck.js"></script>
 </head>
 <body>
 		<c:import url="header.jsp" />
@@ -29,8 +30,8 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-	<form action="EventWritePro.jsp" method="post" enctype="multipart/form-data">
-<div class="container" style="margin-top:100px">
+	<form action="EventWritePro.jsp" method="post" enctype="multipart/form-data" name="chkform">
+<div class="container" style="margin-top:30px">
 	<div class="row">
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
@@ -46,7 +47,7 @@
 					</div>
 					<div class="form-group">
 						<label for="board_date">Term</label>
-						<input type="text" id="board_date" name="term" class="form-control" placeholder="yyyy/mm/dd~yyyy/mm/dd 양식에 맞게 입력해 주세요."/>
+						<input type="text" id="board_date" name="term" class="form-control" value="yyyy/mm/dd~yyyy/mm/dd Please fill in the form."/>
 					</div>
 					<div class="form-group">
 						<label for="board_content">Content</label>
@@ -54,7 +55,7 @@
 					</div>
 					<div class="form-group">
 						<div class="text-right">
-							<input type="submit" class="btn btn-primary" value="Register Event">
+						<input type="button" class="btn btn-primary" value="Register Event" onclick="chkInfo()"/>
 							<a href='Event.jsp' class="btn btn-info">List</a>
 						</div>
 					</div>

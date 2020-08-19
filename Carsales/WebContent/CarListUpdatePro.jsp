@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고양이들 수정하기</title>
+<title>Admin Car Management</title>
 </head>
 <body>
 	<%

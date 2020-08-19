@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판 글 쓰기</title>
+<title>FAQ Admin Write</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/FAQCheck.js"></script>
 </head>
 <body>
 	<c:import url="header.jsp" />
@@ -28,26 +29,27 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-	<form action="FAQWritePro.jsp" method="post">
-		<div class="container" style="margin-top: 100px">
+	<form action="FAQWritePro.jsp" method="post" name="chkform">
+		<div class="container" style="margin-top: 30px">
 			<h4 class="card-title">FAQ_Write</h4>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
+					<label class="col-form-label col-form-label-lg" for="inputLarge">Subject</label>
 					<input type="text" name="subject" class="form-control"
-						id="inputLarge" placeholder="제목을 입력해주세요." />
+						id="inputLarge" placeholder="Subject" />
 				</div>
 				<div class="form-group">
-					<label class="col-form-label col-form-label-lg" for="inputLarge">내용</label>
+					<label class="col-form-label col-form-label-lg" for="inputLarge">Content</label>
 					<textarea class="form-control" name="content" style="resize: none;"
 						id="exampleTextarea" rows="3"></textarea>
 				</div>
 				<div class="form-group" align="center">
-					<input type="submit" class="btn btn-info" value="글쓰기">&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="reset" class="btn btn-warning" value="재작성">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" class="btn btn-primary" value="Write" onclick="chkInfo()"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="reset" class="btn btn-warning" value="Reset">&nbsp;&nbsp;&nbsp;&nbsp;
 
 					<button class="btn btn-primary"
-						onclick="location.href='FAQ.jsp'">글 목록 보기</button>
+						onclick="location.href='FAQ.jsp'">List</button>
 				</div>
 			</fieldset>
 		</div>

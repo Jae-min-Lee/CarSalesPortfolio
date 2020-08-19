@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 관리 페이지</title>
+<title>Event</title>
 </head>
 <body>
 	<%

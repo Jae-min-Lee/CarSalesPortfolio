@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Free Board_Update</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/FBCheckUpdate.js"></script>
 </head>
 <body>
 	<%
@@ -36,7 +37,7 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-<form action="BoardUpdatePro.jsp" method="post">
+<form action="BoardUpdatePro.jsp" method="post" name="chkform">
 <div class="container" style="margin-top: 30px">
 <h2 align="center">Board Info Update Page</h2>
 		<fieldset>
@@ -82,8 +83,8 @@
 						id="inputLarge"/>
 				</div>
 				<div class="form-group" align="center">
-					<input type="hidden" name="num" value="<%=bean.getNum()%>"> 
-					<input type="submit" class="btn btn-warning" value="Update">&nbsp;&nbsp; <input type="button" onclick="location.href='BoardList.jsp'" class="btn btn-primary" value="List">
+					<input type="hidden" name="num" value="<%=bean.getNum()%>">
+					<input type="button" class="btn btn-warning" value="Update" onclick="chkInfo()"/> &nbsp;&nbsp; <input type="button" onclick="location.href='BoardList.jsp'" class="btn btn-primary" value="List">
 				</div>
 			</fieldset>
 		</div>

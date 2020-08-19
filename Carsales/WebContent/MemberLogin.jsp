@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>Login</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>

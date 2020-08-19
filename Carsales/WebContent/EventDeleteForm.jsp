@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 게시물 삭제</title>
+<title>Event Admin Delete</title>
 </head>
 <body>
 		<c:import url="header.jsp" />

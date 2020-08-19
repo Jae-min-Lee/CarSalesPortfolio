@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Free Board_ReWrite</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/FBCheck.js"></script>
 </head>
 <body>
 <c:import url="header.jsp"/>
@@ -36,8 +37,8 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-	<form action="BoardReWritePro.jsp" method="post">
-	<div class="container" style="margin-top: 100px">
+	<form action="BoardReWritePro.jsp" method="post" name="chkform">
+	<div class="container" style="margin-top: 30px">
 			<h2 align="center">Board Rewrite Page</h2>
 			<fieldset>
 				<div class="form-group">
@@ -69,7 +70,7 @@
 						<input type="hidden" name="ref" value="<%=ref %>">
 		<input type="hidden" name="re_step" value="<%=re_step %>">
 		<input type="hidden" name="re_level" value="<%=re_level %>">
-					<input type="submit" class="btn btn-info" value="Rewrite">&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="btn btn-info" value="ReWrite" onclick="chkInfo()"/>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="reset" class="btn btn-warning" value="Reset">&nbsp;&nbsp;&nbsp;&nbsp;
 
 					<button class="btn btn-primary"

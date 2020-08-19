@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>차량구매예약</title>
+<title>Car Sales Reservation</title>
 <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 </head>
 <body>

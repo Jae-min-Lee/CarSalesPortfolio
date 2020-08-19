@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약 처리</title>
+<title>Car Sales Reservation</title>
 </head>
 <body>
 <%

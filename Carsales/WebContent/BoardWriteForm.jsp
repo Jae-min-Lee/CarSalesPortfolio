@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Free Board_Write</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/FBCheck.js"></script>
 </head>
 <body>
 	<c:import url="header.jsp" />
@@ -28,8 +29,8 @@
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-	<form action="BoardWritePro.jsp" method="post">
-		<div class="container" style="margin-top: 100px">
+	<form action="BoardWritePro.jsp" method="post" name="chkform">
+		<div class="container" style="margin-top: 30px">
 			<h2 align="center">Board Write Page</h2>
 			<fieldset>
 				<div class="form-group">
@@ -58,7 +59,7 @@
 						id="exampleTextarea" rows="3"></textarea>
 				</div>
 				<div class="form-group" align="center">
-					<input type="submit" class="btn btn-info" value="Write">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" class="btn btn-info" value="Write" onclick="chkInfo()"/>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="reset" class="btn btn-warning" value="Reset">&nbsp;&nbsp;&nbsp;&nbsp;
 
 					<button class="btn btn-primary"
