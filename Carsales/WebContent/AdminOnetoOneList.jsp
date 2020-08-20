@@ -121,7 +121,7 @@
 	%>
 	<div style="float: right; margin-right: 1%;">
 		<button type="button" class="btn btn-primary btn-lg"
-			onclick="location.href='OnetoOneWriteForm.jsp'">글쓰기</button>
+			onclick="location.href='OnetoOneWriteForm.jsp'">Write</button>
 	</div>
 	<%
 		}

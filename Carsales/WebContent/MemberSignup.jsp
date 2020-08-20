@@ -24,8 +24,8 @@
 <script src="js/main.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="js/address.js"></script>
-<script src="js/SignUpCheck.js"></script>
 <script src="js/UseIdChk.js"></script>
+<script src="js/SignUpCheck.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <!-- Google Font -->

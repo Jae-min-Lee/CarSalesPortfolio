@@ -105,8 +105,9 @@ custpw varchar2(20),
 phone varchar2(13),
 adress clob,
 joindate date,
-grade char(1),
-city char(2)
+grade varchar2(2),
+city char(2),
+CONSTRAINT FK_grade FOREIGN KEY(grade) REFERENCES grade(grade)
 );
 
 drop SEQUENCE member_seq;
@@ -370,7 +371,7 @@ create table OnetoOne (
     Num number primary key ,
     Subject	varchar2(40) not null,
     Email	varchar2(40) not null,
-    phone varchar2(13),
+    phone varchar2(13) not null,
     Reg_date	Date,
     Content	 clob not null
 );

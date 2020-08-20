@@ -83,13 +83,12 @@
 	
 	
 	%>
-		<!-- Breadcrumb End -->
     <div class="breadcrumb-option set-bg" data-setbg="images/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-20 text-center">
+                <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>AdminPage</h2>
+                        <h2>Admin Page</h2>
                         <div class="breadcrumb__links">
                             <a href="Main.jsp"><i class="fa fa-home"></i> Home</a>
                             <span>AdminPage</span>
@@ -103,7 +102,7 @@
 	<div class="container" style="margin-top: 30px; margin-bottom: 30px">
 		<div class="card shadow">
 			<div class="card-body">
-				<h4 class="card-title">회원목록보기</h4>
+				<h2 class="card-title" align="center">Member List</h2><br>
 				<table class="table table-hover" id='OnetoOne_list'>
 					<thead>
 						<tr>

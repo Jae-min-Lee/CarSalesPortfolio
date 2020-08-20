@@ -4,7 +4,7 @@
 function idcheck(){
 	
 	 if(document.chkform.custname.value.length<1 || document.chkform.custname.value.length==null){
-	  alert("중복체크할 아이디를 입력하십시오");
+	  alert("Enter Your ID");
 	  return false;
 	 }
 	 var url = "MemberUseId.jsp?custname="+document.chkform.custname.value;
